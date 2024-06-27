@@ -1,0 +1,8 @@
+
+State Machine - |parking_management_system|time_threshold
+Name time_threshold.0011 time_threshold.0010 time_threshold.0001 time_threshold.0000 time_threshold.0100 
+time_threshold.0000 0 0 0 0 0 
+time_threshold.0001 0 0 1 1 0 
+time_threshold.0010 0 1 0 1 0 
+time_threshold.0011 1 0 0 1 0 
+time_threshold.0100 0 0 0 1 1 
