@@ -1,0 +1,216 @@
+`timescale 1ns / 1ps
+
+module tb_parking_management_system;
+
+    // Inputs
+    reg clk;
+    reg reset;
+    reg car_entered;
+    reg car_exited;
+    reg is_uni_car_entered;
+    reg is_uni_car_exited;
+
+    // Outputs
+    wire [9:0] uni_parked_car;
+    wire [9:0] parked_car;
+    wire [9:0] uni_vacated_space;
+    wire [9:0] vacated_space;
+    wire uni_is_vacated_space;
+    wire is_vacated_space;
+
+    // Clock period definition
+    parameter CLK_PERIOD = 10; // 10 ns
+
+    // Instantiate the DUT
+    parking_management_system dut (
+        .clk(clk),
+        .reset(reset),
+        .car_entered(car_entered),
+        .car_exited(car_exited),
+        .is_uni_car_entered(is_uni_car_entered),
+        .is_uni_car_exited(is_uni_car_exited),
+        .uni_parked_car(uni_parked_car),
+        .parked_car(parked_car),
+        .uni_vacated_space(uni_vacated_space),
+        .vacated_space(vacated_space),
+        .uni_is_vacated_space(uni_is_vacated_space),
+        .is_vacated_space(is_vacated_space)
+    );
+
+    // Clock generation
+    always #CLK_PERIOD clk = ~clk;
+
+    // Initial conditions and test scenario
+    initial begin
+        // Initialize inputs
+        clk = 0;
+        reset = 1;
+        car_entered = 0;
+        car_exited = 0;
+        is_uni_car_entered = 0;
+        is_uni_car_exited = 0;
+
+        // Wait for some time after reset
+        #100;
+
+        // Release reset
+        reset = 0;
+
+        // Test scenario 1: University car enters
+        $display("Action 1: University car enters");
+        is_uni_car_entered = 1;
+        car_entered = 1;
+        #20;
+        car_entered = 0;
+        is_uni_car_entered = 0;
+        #100;
+
+        // Test scenario 2: Non-university car enters
+        $display("Action 2: Non-university car enters");
+        is_uni_car_entered = 0;
+        car_entered = 1;
+        #20;
+        car_entered = 0;
+        is_uni_car_entered = 0;
+        #100;
+
+        // Test scenario 3: University car exits
+        $display("Action 3: University car exits");
+        is_uni_car_exited = 1;
+        car_exited = 1;
+        #20;
+        car_exited = 0;
+        is_uni_car_exited = 0;
+        #100;
+
+        // Test scenario 4: Non-university car exits
+        $display("Action 4: Non-university car exits");
+        is_uni_car_exited = 0;
+        car_exited = 1;
+        #20;
+        car_exited = 0;
+        is_uni_car_exited = 0;
+        #100;
+
+        // Test scenario 5: Fill all university parking spaces
+        $display("Action 5: Fill all university parking spaces");
+        repeat (500) begin
+            is_uni_car_entered = 1;
+            car_entered = 1;
+            #20;
+            car_entered = 0;
+            is_uni_car_entered = 0;
+            #20;
+        end
+
+        // Test scenario 6: Fill all non-university parking spaces
+        $display("Action 6: Fill all non-university parking spaces");
+        repeat (200) begin
+            is_uni_car_entered = 0;
+            car_entered = 1;
+            #20;
+            car_entered = 0;
+            is_uni_car_entered = 0;
+            #20;
+        end
+
+        // Test scenario 7: Attempt to park another university car (should fail)
+        $display("Action 7: Attempt to park another university car (should fail)");
+        is_uni_car_entered = 1;
+        car_entered = 1;
+        #20;
+        car_entered = 0;
+        is_uni_car_entered = 0;
+        #100;
+
+        // Test scenario 8: Attempt to park another non-university car (should fail)
+        $display("Action 8: Attempt to park another non-university car (should fail)");
+        is_uni_car_entered = 0;
+        car_entered = 1;
+        #20;
+        car_entered = 0;
+        is_uni_car_entered = 0;
+        #100;
+
+        // Test scenario 9: University car exits
+        $display("Action 9: University car exits");
+        is_uni_car_exited = 1;
+        car_exited = 1;
+        #20;
+        car_exited = 0;
+        is_uni_car_exited = 0;
+        #100;
+
+        // Test scenario 10: Non-university car exits
+        $display("Action 10: Non-university car exits");
+        is_uni_car_exited = 0;
+        car_exited = 1;
+        #20;
+        car_exited = 0;
+        is_uni_car_exited = 0;
+        #100;
+
+        // Test scenario 11: Park a university car after spot is vacated
+        $display("Action 11: Park a university car after spot is vacated");
+        is_uni_car_entered = 1;
+        car_entered = 1;
+        #20;
+        car_entered = 0;
+        is_uni_car_entered = 0;
+        #100;
+
+        // Test scenario 12: Park a non-university car after spot is vacated
+        $display("Action 12: Park a non-university car after spot is vacated");
+        is_uni_car_entered = 0;
+        car_entered = 1;
+        #20;
+        car_entered = 0;
+        is_uni_car_entered = 0;
+        #100;
+
+        // Additional test scenario 13: Multiple university car entries and exits
+        $display("Action 13: Multiple university car entries and exits");
+        repeat (10) begin
+            is_uni_car_entered = 1;
+            car_entered = 1;
+            #20;
+            car_entered = 0;
+            is_uni_car_entered = 0;
+            #20;
+
+            is_uni_car_exited = 1;
+            car_exited = 1;
+            #20;
+            car_exited = 0;
+            is_uni_car_exited = 0;
+            #20;
+        end
+
+        // Additional test scenario 14: Multiple non-university car entries and exits
+        $display("Action 14: Multiple non-university car entries and exits");
+        repeat (10) begin
+            is_uni_car_entered = 0;
+            car_entered = 1;
+            #20;
+            car_entered = 0;
+            is_uni_car_entered = 0;
+            #20;
+
+            is_uni_car_exited = 0;
+            car_exited = 1;
+            #20;
+            car_exited = 0;
+            is_uni_car_exited = 0;
+            #20;
+        end
+
+        // Finish simulation
+        #1000;
+        $finish;
+    end
+
+endmodule
+
+
+
+
