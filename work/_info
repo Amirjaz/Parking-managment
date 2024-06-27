@@ -1,0 +1,81 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dE:/SUT/4th semster/Digital System Disign/HW4
+vparking_management_system
+Z0 !s110 1719505612
+!i10b 1
+!s100 ^@9NVR?a6DdHLBQMO`Rm32
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I9O924?1X=6Q=O>]:C22n@1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dE:/SUT/4th semster/Digital System Disign/Project
+w1719505458
+8E:/SUT/4th semster/Digital System Disign/Project/parking_management_system.v
+FE:/SUT/4th semster/Digital System Disign/Project/parking_management_system.v
+!i122 20
+L0 1 117
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1719505612.000000
+!s107 E:/SUT/4th semster/Digital System Disign/Project/parking_management_system.v|
+!s90 -reportprogress|300|-work|work|E:/SUT/4th semster/Digital System Disign/Project/parking_management_system.v|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+vTB_parking_management_system
+!s110 1719440894
+!i10b 1
+!s100 m7zz<d2VAWC8mnhzCM_LZ1
+R1
+IWgcmc<4D9cMbHz9NJ3l4Y0
+R2
+R3
+w1719440891
+Z8 8E:/SUT/4th semster/Digital System Disign/Project/TB.v
+Z9 FE:/SUT/4th semster/Digital System Disign/Project/TB.v
+!i122 11
+L0 1 122
+R4
+r1
+!s85 0
+31
+!s108 1719440894.000000
+!s107 E:/SUT/4th semster/Digital System Disign/Project/TB.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/SUT/4th semster/Digital System Disign/Project/TB.v|
+!i113 1
+R6
+R7
+n@t@b_parking_management_system
+vtb_parking_management_system
+R0
+!i10b 1
+!s100 Io@o645g1fcbe^?T]A87^1
+R1
+Ij@K7cJd@M6fViE1@[YR1h1
+R2
+R3
+w1719505591
+R8
+R9
+!i122 21
+L0 3 210
+R4
+r1
+!s85 0
+31
+R5
+Z10 !s107 E:/SUT/4th semster/Digital System Disign/Project/TB.v|
+!s90 -reportprogress|300|-work|work|E:/SUT/4th semster/Digital System Disign/Project/TB.v|
+!i113 1
+R6
+R7
